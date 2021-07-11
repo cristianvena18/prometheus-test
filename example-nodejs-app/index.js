@@ -46,6 +46,10 @@ const server = http.createServer(async (req, res) => {
         await createOrderHandler(req, res)
       }
 
+      if (route === '/error') {
+        Promise.reject(new Error('Internal Error'));
+      }
+
   } catch (error) {
     res.writeHead(500).end()
   }
